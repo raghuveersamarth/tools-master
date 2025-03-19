@@ -9,10 +9,14 @@ const LoginPage = () => {
     <div className="container mx-auto  my-25 w-250 rounded-2xl cardlog pb-10">
         <div className="text-3xl p-5 bg-gray-300 rounded-t-2xl">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <h1 className="">Log In/Sign In1</h1>
 =======
         <h1 className="">Log In/Sign In</h1>
 >>>>>>> 50152559c41d42a60fc6f6b593070409cd4aa9be
+=======
+        <h1 className="">Log In/Sign In1</h1>
+>>>>>>> 32c2d05 (commit test)
         </div>
         
         <hr />
