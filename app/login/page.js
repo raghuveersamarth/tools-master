@@ -7,7 +7,7 @@ const page = () => {
   return (
     <div className="container mx-auto  my-25 w-250 rounded-2xl cardlog pb-10">
         <div className="text-3xl p-5 bg-gray-300 rounded-t-2xl">
-        <h1 className="">Log In</h1>
+        <h1 className="">Log In/Sign In</h1>
         </div>
         
         <hr />
