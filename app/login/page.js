@@ -27,7 +27,8 @@ const page = () => {
                 <div className="links mt-5 m-3 mb-0">
                     <a href="" className="text-blue-800 hover:underline">Forgot your Password?</a>
                 </div>
-                
+                <button className="cursor-pointer" onClick={() => signIn()}>Sign in</button>
+                <button className="cursor-pointer" onClick={() => signOut()}>Sign out</button>
             </form>
         </div>
     </div>  
