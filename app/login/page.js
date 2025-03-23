@@ -4,7 +4,10 @@ import "./globals.css"
 import { useSession, signIn, signOut } from "next-auth/react";
 
 const page = () => {
+    const { data: session } = useSession()
+
   return (
+    
     <div className="container mx-auto  my-25 w-250 rounded-2xl cardlog pb-10">
         <div className="text-3xl p-5 bg-gray-300 rounded-t-2xl">
         <h1 className="">Log In/Sign In</h1>
@@ -24,6 +27,7 @@ const page = () => {
                 <div className="links mt-5 m-3 mb-0">
                     <a href="" className="text-blue-800 hover:underline">Forgot your Password?</a>
                 </div>
+                
             </form>
         </div>
     </div>  
