@@ -1,15 +1,16 @@
 import NextAuth from 'next-auth'
-import AppleProvider from 'next-auth/providers/apple'
-import FacebookProvider from 'next-auth/providers/facebook'
 import GoogleProvider from 'next-auth/providers/google'
-import EmailProvider from 'next-auth/providers/email'
 
-export default NextAuth({
+export const authOptions = {  // ✅ Define authOptions
   providers: [
-    // OAuth authentication providers...
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET
-    })    
-  ]
-})
+    })
+  ],
+  secret: process.env.NEXTAUTH_SECRET
+}
+
+const handler = NextAuth(authOptions)  // ✅ Use authOptions
+
+export { handler as GET, handler as POST }  // ✅ Ensure API supports both GET and POST
