@@ -10,6 +10,7 @@ const LoginPage = () => {
         <div className="text-3xl p-5 bg-gray-300 rounded-t-2xl">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <h1 className="">Log In/Sign In1</h1>
 =======
         <h1 className="">Log In/Sign In</h1>
@@ -17,6 +18,9 @@ const LoginPage = () => {
 =======
         <h1 className="">Log In/Sign In1</h1>
 >>>>>>> 32c2d05 (commit test)
+=======
+        <h1 className="">Log In/Sign In1</h1>
+>>>>>>> aac2250f271655078f0afd0db7bb47742d94c8a7
         </div>
         
         <hr />
