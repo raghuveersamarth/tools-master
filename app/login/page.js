@@ -24,6 +24,9 @@ const page = () => {
                     <p className="mt-10 m-3 text-xl">Password</p>
                     <input type="text" name="" id=""className="w-100 py-2 px-3 focus:outline-none rounded-lg ms-2" placeholder="Enter password" />
                 </div>
+                <div className="">
+                    <input type="button" value="Log in" className="rounded-xl px-3 py-2 m-2 mt-5 "/>
+                </div>
                 <div className="links mt-5 m-3 mb-0">
                     <a href="" className="text-blue-800 hover:underline">Forgot your Password?</a>
                 </div>
