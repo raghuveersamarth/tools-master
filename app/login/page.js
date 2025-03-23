@@ -1,48 +1,5 @@
-"use client";
-import React from "react";
-import { useState } from "react";
-
 const LoginPage = () => {
   return (
-<<<<<<< HEAD
-    
-    <div className="container mx-auto  my-25 w-250 rounded-2xl cardlog pb-10">
-        <div className="text-3xl p-5 bg-gray-300 rounded-t-2xl">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <h1 className="">Log In/Sign In1</h1>
-=======
-        <h1 className="">Log In/Sign In</h1>
->>>>>>> 50152559c41d42a60fc6f6b593070409cd4aa9be
-=======
-        <h1 className="">Log In/Sign In1</h1>
->>>>>>> 32c2d05 (commit test)
-=======
-        <h1 className="">Log In/Sign In1</h1>
->>>>>>> aac2250f271655078f0afd0db7bb47742d94c8a7
-        </div>
-        
-        <hr />
-        <div className="form-controls bg-white">
-            <form action="" className="formgroup ms-3">
-                <div className="  rounded-lg overflow-hidden"> 
-                    <p className="mt-10 m-3 text-xl">Email</p>
-                    <input type="text" className="w-100 px-3 py-2 focus:outline-none rounded-lg ms-2" placeholder="Enter email"/>
-                </div>
-                <div className="rounded-lg overflow-hidden ">
-                    <p className="mt-10 m-3 text-xl">Password</p>
-                    <input type="text" name="" id=""className="w-100 py-2 px-3 focus:outline-none rounded-lg ms-2" placeholder="Enter password" />
-                </div>
-                <div className="">
-                    <input type="button" value="Log in" className="rounded-xl px-3 py-2 m-2 mt-5 "/>
-                </div>
-                <div className="links mt-5 m-3 mb-0">
-                    <a href="" className="text-blue-800 hover:underline">Forgot your Password?</a>
-                </div>
-                
-            </form>
-=======
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow p-6">
         <div className="text-center">
@@ -55,7 +12,16 @@ const LoginPage = () => {
         </div>
 
         <div className="mt-7 flex flex-col gap-2">
-          <button className="inline-flex cursor-pointer h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
+          <button className="inline-flex h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
+            <img
+              src="https://www.svgrepo.com/show/512317/github-142.svg"
+              alt="GitHub"
+              className="h-[18px] w-[18px]"
+            />
+            Continue with GitHub
+          </button>
+
+          <button className="inline-flex h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
             <img
               src="https://www.svgrepo.com/show/475656/google-color.svg"
               alt="Google"
@@ -63,7 +29,15 @@ const LoginPage = () => {
             />
             Continue with Google
           </button>
->>>>>>> 53dda0581d1fc1912f4d6dcf43aabeee19bd497f
+
+          <button className="inline-flex h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
+            <img
+              src="https://www.svgrepo.com/show/448234/linkedin.svg"
+              alt="LinkedIn"
+              className="h-[18px] w-[18px]"
+            />
+            Continue with LinkedIn
+          </button>
         </div>
 
         <div className="flex w-full items-center gap-2 py-6 text-sm text-slate-600">
@@ -96,10 +70,7 @@ const LoginPage = () => {
             placeholder="Password"
           />
           <p className="mb-3 mt-2 text-sm text-gray-500">
-            <a
-              href="/forgot-password"
-              className="text-blue-800 hover:text-blue-600"
-            >
+            <a href="/forgot-password" className="text-blue-800 hover:text-blue-600">
               Reset your password?
             </a>
           </p>
