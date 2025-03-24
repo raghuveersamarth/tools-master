@@ -15,5 +15,12 @@
 .nav ul li:hover{
     color: #fffbf5;
     cursor: pointer;
-    animation-delay: 100ms;
+    animation-delay: 75ms;
+}
+.nav{
+    display: flex;
+}
+.userimage{
+    border-radius: 50%;
+    height: 4rem;
 }
