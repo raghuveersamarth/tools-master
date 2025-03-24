@@ -1,4 +1,15 @@
+"use client";
+import React, { useEffect } from "react";
+import { useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
+
 const LoginPage = () => {
+  const { data: session } = useSession();
+  const handlesubmit = async (e) => {
+    let ndata = Object.fromEntries(e);
+    console.log(ndata)
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow p-6">
@@ -12,16 +23,9 @@ const LoginPage = () => {
         </div>
 
         <div className="mt-7 flex flex-col gap-2">
-          <button className="inline-flex h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
-            <img
-              src="https://www.svgrepo.com/show/512317/github-142.svg"
-              alt="GitHub"
-              className="h-[18px] w-[18px]"
-            />
-            Continue with GitHub
-          </button>
 
-          <button className="inline-flex h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
+
+          <button onClick={()=>signIn("google")} className="inline-flex cursor-pointer h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
             <img
               src="https://www.svgrepo.com/show/475656/google-color.svg"
               alt="Google"
@@ -30,23 +34,14 @@ const LoginPage = () => {
             Continue with Google
           </button>
 
-          <button className="inline-flex h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
-            <img
-              src="https://www.svgrepo.com/show/448234/linkedin.svg"
-              alt="LinkedIn"
-              className="h-[18px] w-[18px]"
-            />
-            Continue with LinkedIn
-          </button>
         </div>
-
         <div className="flex w-full items-center gap-2 py-6 text-sm text-slate-600">
           <div className="h-px w-full bg-slate-200"></div>
           OR
           <div className="h-px w-full bg-slate-200"></div>
         </div>
 
-        <form className="w-full">
+        <form className="w-full" action={handlesubmit}>
           <label htmlFor="email" className="sr-only">
             Email address
           </label>
