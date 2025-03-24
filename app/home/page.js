@@ -7,19 +7,19 @@ const page = () => {
   return (
     <div className="nav text-xl">
         <ul>
-            <li>Home</li>
-            <li>Tools</li>
-            <li>Categories</li>
-            <li>Users</li>
+            <li className="hover:scale-103 transition-transform duration-1000">Home</li>
+            <li className="hover:scale-103 transition-transform duration-1000">Tools</li>
+            <li className="hover:scale-103 transition-transform duration-1000">Categories</li>
+            <li className="hover:scale-103 transition-transform duration-1000">Users</li>
         </ul>
                     
-            {/* <Image 
-            src="https://static.vecteezy.com/system/resources/thumbnails/005/545/335/small/user-sign-icon-person-symbol-human-avatar-isolated-on-white-backogrund-vector.jpg"
+            <Image 
+            src="/userimg.png"
             alt="User Image"
-            className="userimage"
-            height={100}
-            width={50}
-            /> */}
+            className="userimage ms-auto me-3 my-auto "
+            height={100 }
+            width={60}
+            />
 
     </div>
   );
