@@ -18,7 +18,7 @@ const page = () => {
             alt="User Image"
             className="userimage ms-auto me-3 my-auto "
             height={100 }
-            width={60}
+            width={50}
             />
 
     </div>
