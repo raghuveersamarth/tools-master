@@ -1,4 +1,12 @@
+"use client"
+import {React, useState} from "react";
+import { useSession, signIn, signOut } from "next-auth/react"
 const SignUpPage = () => {
+  const { data: session } = useSession();
+  const handlesubmit = async (e) => {
+    let ndata = Object.fromEntries(e);
+    console.log(ndata);
+  }
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center p-4">
         <div className="w-full max-w-md bg-white rounded-lg shadow p-6">
@@ -13,7 +21,7 @@ const SignUpPage = () => {
   
           <div className="mt-7 flex flex-col gap-2">
   
-            <button className="inline-flex h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
+            <button onClick={()=>signIn("google")} className="inline-flex cursor-pointer h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
               <img
                 src="https://www.svgrepo.com/show/475656/google-color.svg"
                 alt="Google"
@@ -29,7 +37,7 @@ const SignUpPage = () => {
             <div className="h-px w-full bg-slate-200"></div>
           </div>
   
-          <form className="w-full">
+          <form className="w-full" action={handlesubmit}>
             <label htmlFor="name" className="sr-only">
               Full Name
             </label>
