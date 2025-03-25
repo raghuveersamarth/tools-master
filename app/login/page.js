@@ -8,6 +8,16 @@ const LoginPage = () => {
   const handlesubmit = async (e) => {
     let ndata = Object.fromEntries(e);
     console.log(ndata)
+    const response = await fetch("/api/sign",{
+      method: "POST",
+      body:JSON.stringify({name: ndata.name,email: ndata.email,password: ndata.password,}),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      
+    })
+    const data = await response.json();
+    console.log(data.message)
   };
 
   return (

@@ -1,11 +1,22 @@
 "use client"
 import {React, useState} from "react";
 import { useSession, signIn, signOut } from "next-auth/react"
+
 const SignUpPage = () => {
   const { data: session } = useSession();
   const handlesubmit = async (e) => {
     let ndata = Object.fromEntries(e);
     console.log(ndata);
+    const response = await fetch("/api/sign",{
+      method: "POST",
+      body:JSON.stringify({name: ndata.name,email: ndata.email,password: ndata.password,}),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      
+    })
+    const data = await response.json();
+    console.log(data.message)
   }
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center p-4">
