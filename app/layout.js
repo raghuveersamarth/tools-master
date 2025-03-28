@@ -1,6 +1,9 @@
 import Sessionwrapper from "./components/sessionwrapper";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Home from "./page";
+import Link from "next/link";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,9 +23,28 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+
+      <nav>
+        <div className="nav text-xl">
+          <ul>
+              <Link href="/home"><li className="hover:scale-103 transition-transform duration-1000">Home</li></Link>
+              <li className="hover:scale-103 transition-transform duration-1000">Tools</li>
+              <li className="hover:scale-103 transition-transform duration-1000">Categories</li>
+              <Link href="/users"><li className="hover:scale-103 transition-transform duration-1000">Users</li></Link>
+          </ul>
+                    
+          <Image 
+          src="/userimg.png"
+          alt="User Image"
+          className="userimage ms-auto me-3 my-auto "
+          height={100 }
+          width={50}
+          />
+
+        </div>
+      </nav>
+        
         <Sessionwrapper>{children}</Sessionwrapper>
       </body>
     </html>

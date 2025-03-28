@@ -1,2 +1,28 @@
 @import "tailwindcss";
 
+.nav ul{
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    padding: 2rem 4rem;
+
+}
+.nav {
+    background-color: #575549;
+    color: #d8cfbd;
+}
+.nav ul li{
+    transition: color 0.5s ease-in;
+}
+.nav ul li:hover{
+    color: #fffbf5;
+    cursor: pointer;
+    animation-delay: 75ms;
+}
+.nav{
+    display: flex;
+}
+.userimage{
+    border-radius: 50%;
+    height: 3rem;
+}
