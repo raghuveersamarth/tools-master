@@ -26,8 +26,21 @@ const handler = async function(req)  {
             return NextResponse.json({message: `Error occured ${error}`},{status:400})
         }
     }
+    else if(req.method === "GET"){
+        try{
+            const users = await prisma.user.findMany();
+
+            return new Response(JSON.stringify(users),{
+                status: 200,
+                headers : {"Content-Type": "application/json"}
+        });
+        }
+        catch(error){
+            return Response.json({message: `Error occured ${error}`},{status:400})
+        }
+    }
     else{
-        return Response.json({message:"this is get method"})
+        return Response.json({message: "Method not defined"},{status: 300})
     }
 }
 export {handler as GET,handler as POST}
