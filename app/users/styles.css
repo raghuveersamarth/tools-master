@@ -1,0 +1,15 @@
+table{
+    width: 75%;
+    margin-top: 1.5rem;
+}
+table tr td{
+    border: 0.05rem #171717 solid;
+}
+
+thead th{
+    border: 0.05rem #171717 solid;
+}
+
+thead{
+    background-color: #d8cfbd;
+}
