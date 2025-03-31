@@ -8,30 +8,24 @@ const prisma = new PrismaClient();
 
 export const authOptions = {  // ✅ Define authOptions
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET
-    }),
     CredentialsProvider({
-      name: "Credentials",
+      name: "Sign in",
       credentials: {
-        email: { label: "Email", type: "text", placeholder: "you@example.com" },
+        username: { label: "Username", type: "text", placeholder: "johndoe" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
-          throw new Error("Missing email or password");
-        }
-        // Check if user exists
-        const user = await prisma.user.findUnique({
-          where: { email: credentials.email },
-        });
+        // Fake user for demo purposes
+        const user = { id: "1", name: "John Doe", password: "password123" };
 
-        if (!user) {
-          throw new Error("User not found");
+        // Check if the entered username and password match
+        if (
+          credentials?.username === user.name &&
+          credentials?.password === user.password
+        ) {
+          return user; // ✅ Success: Return user object
         }
-
-        return { id: user.id, name: user.name, email: user.email };
+        throw new Error("Invalid credentials"); // ❌ Failed: Show error
       },
     }),
   ],
