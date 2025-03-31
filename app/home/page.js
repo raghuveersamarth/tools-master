@@ -1,12 +1,19 @@
+"use client"
 import React from "react";
 import "./globals.css"
 import Image from "next/image";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 
 const page = () => {
+  const {data: session} = useSession()
   return (
-    <p>Home</p>
+    <div className="">
+      <p>{session.user.email}</p>
+      <p>Home</p>
+    </div>
+    
   );
 };
 

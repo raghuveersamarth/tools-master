@@ -7,6 +7,7 @@ const SignUpPage = () => {
   const handlesubmit = async (e) => {
     let ndata = Object.fromEntries(e);
     console.log(ndata);
+    console.log(session.user.email)
     const response = await fetch("/api/sign",{
       method: "POST",
       body:JSON.stringify({name: ndata.name,email: ndata.email,password: ndata.password,}),
