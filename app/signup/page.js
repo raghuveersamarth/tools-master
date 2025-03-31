@@ -5,29 +5,26 @@ import { useSession, signIn, signOut } from "next-auth/react";
 const SignUpPage = () => {
   const { data: session } = useSession();
   const [form, setform] = useState({
-    name: "",
-    email: "",
+    Username: "",
     password: "",
   });
   const handlesubmit = async (e) => {
-    let ndata = Object.fromEntries(e);
-    console.log(ndata);
-    const response = await fetch("/api/sign",{
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    });
+    // const response = await fetch("/api/sign",{
+    //   method: "POST",
+    //   headers: myHeaders,
+    //   body: raw,
+    //   redirect: "follow",
+    // });
 
-    fetch("http://localhost:3000/api/sign", requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.error(error));
+    // fetch("http://localhost:3000/api/sign", requestOptions)
+    //   .then((response) => response.text())
+    //   .then((result) => console.log(result))
+    //   .catch((error) => console.error(error));
 
     // Automatically log in after signing up
     const loginResponse = await signIn("credentials", {
       redirect: false,
-      email: form.email,
+      Username: form.Username,
       password: form.password,
     });
 
@@ -54,7 +51,7 @@ const handleChange = (e) => {
 
         <form className="w-full" action={handlesubmit}>
           <label htmlFor="name" className="sr-only">
-            Full Name
+            Username
           </label>
           <input
             name="name"
