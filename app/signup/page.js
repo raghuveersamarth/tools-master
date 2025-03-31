@@ -4,33 +4,15 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 const SignUpPage = () => {
   const { data: session } = useSession();
-  const [form, setform] = useState({
-    name: "",
-    id: "",
-    email: "",
-    password: "",
-    role: "",
-  });
-  const handleChange = (e) => {
-    setform({ ...form, [e.target.name]: e.target.value });
-    console.log(form);
-  };
-  const handlesubmit = async () => {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const raw = JSON.stringify({
-      name: form.name,
-      email: form.email,
-      password: form.password,
-    });
-
-    const requestOptions = {
+  const handlesubmit = async (e) => {
+    let ndata = Object.fromEntries(e);
+    console.log(ndata);
+    const response = await fetch("/api/sign",{
       method: "POST",
       headers: myHeaders,
       body: raw,
       redirect: "follow",
-    };
+    });
 
     fetch("http://localhost:3000/api/sign", requestOptions)
       .then((response) => response.text())
