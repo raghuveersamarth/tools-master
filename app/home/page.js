@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-import "./globals.css"
+import "../globals.css"
 import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
