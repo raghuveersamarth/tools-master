@@ -5,7 +5,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 const SignUpPage = () => {
   const { data: session } = useSession();
   const [form, setform] = useState({
-    Username: "",
+    username: "",
     password: "",
   });
   const handlesubmit = async (e) => {
@@ -24,7 +24,7 @@ const SignUpPage = () => {
     // Automatically log in after signing up
     const loginResponse = await signIn("credentials", {
       redirect: false,
-      Username: form.Username,
+      username: form.username,
       password: form.password,
     });
 
@@ -54,7 +54,7 @@ const handleChange = (e) => {
             Username
           </label>
           <input
-            name="name"
+            name="username"
             type="text"
             autoComplete="name"
             onChange={handleChange}

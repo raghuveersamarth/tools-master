@@ -37,9 +37,9 @@ const page = () => {
         </tr>
       </thead>
       <tbody>
-        {users.map((user)=>{
+        {users.map((user,index)=>{
           return (
-            <tr className="">
+            <tr className="" key={index} >
               <td className="px-3 py-2">{user.id}</td>
               <td className="px-3 py-2">{user.name}</td>
               <td className="px-3 py-2">{user.password}</td>
