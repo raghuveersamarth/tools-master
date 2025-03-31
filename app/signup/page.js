@@ -8,7 +8,7 @@ const SignUpPage = () => {
     username: "",
     password: "",
   });
-  const handlesubmit = async (e) => {
+  const handlesubmit = async () => {
     // const response = await fetch("/api/sign",{
     //   method: "POST",
     //   headers: myHeaders,

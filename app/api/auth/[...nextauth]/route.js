@@ -15,15 +15,13 @@ export const authOptions = {  // ✅ Define authOptions
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        // Fake user for demo purposes
-        const user = { id: "1", name: "John Doe", password: "password123" };
-        console.log(credentials)
-        // Check if the entered username and password match
-        if (
-          credentials?.username === user.name &&
-          credentials?.password === user.password
-        ) {
-          return user; // ✅ Success: Return user object
+        // activate session if user does not exist
+        const {username} = credentials;
+        const user = await prisma.user.findUnique({
+          where: { username },
+        });
+        if (!user) {
+          return null; // User not found
         }
       },
     }),
