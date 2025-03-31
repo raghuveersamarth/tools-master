@@ -4,6 +4,11 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 const SignUpPage = () => {
   const { data: session } = useSession();
+  const [form, setform] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const handlesubmit = async (e) => {
     let ndata = Object.fromEntries(e);
     console.log(ndata);
@@ -30,6 +35,9 @@ const SignUpPage = () => {
       throw new Error(loginResponse.error);
     }
   };
+const handleChange = (e) => {
+    setform({ ...form, [e.target.name]: e.target.value });
+  }
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow p-6">
