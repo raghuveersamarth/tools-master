@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav className='flex w-full'>
     <div className="nav text-xl h-20">
       <ul>
           <Link href="/"><li className="hover:scale-103 transition-transform duration-1000">Home</li></Link>
@@ -12,6 +12,7 @@ const Navbar = () => {
           <li className="hover:scale-103 transition-transform duration-1000">Categories</li>
           <Link href="/users"><li className="hover:scale-103 transition-transform duration-1000">Users</li></Link>
       </ul>           
+      </div>
       <Image 
       src="/userimg.png"
       alt="User Image"
@@ -19,7 +20,6 @@ const Navbar = () => {
       height={100 }
       width={50}
       />
-    </div>
   </nav>
   )
 }
