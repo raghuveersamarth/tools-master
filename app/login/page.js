@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { signIn } from "next-auth/react";
 
 const LoginPage = () => {
@@ -14,7 +14,6 @@ const LoginPage = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      
     })
     const data = await response.json();
     console.log(data.message)
@@ -31,7 +30,7 @@ const LoginPage = () => {
             You must be logged in to perform this action.
           </p>
         </div>
-
+    {session?<p>signed in with {session.user.email}</p>:""}
         <div className="mt-7 flex flex-col gap-2">
 
 
@@ -42,6 +41,14 @@ const LoginPage = () => {
               className="h-[18px] w-[18px]"
             />
             Continue with Google
+          </button>
+          <button onClick={()=>signOut("google")} className="inline-flex cursor-pointer h-10 w-full items-center justify-center gap-2 rounded border border-slate-300 bg-white p-2 text-sm font-medium text-black outline-none focus:ring-2 focus:ring-[#333] focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-60">
+            <img
+              src="https://www.svgrepo.com/show/475656/google-color.svg"
+              alt="Google"
+              className="h-[18px] w-[18px]"
+            />
+            Sign out
           </button>
 
         </div>
