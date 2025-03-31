@@ -17,7 +17,7 @@ export const authOptions = {  // ✅ Define authOptions
       async authorize(credentials) {
         // Fake user for demo purposes
         const user = { id: "1", name: "John Doe", password: "password123" };
-
+        console.log(credentials)
         // Check if the entered username and password match
         if (
           credentials?.username === user.name &&
@@ -25,7 +25,6 @@ export const authOptions = {  // ✅ Define authOptions
         ) {
           return user; // ✅ Success: Return user object
         }
-        throw new Error("Invalid credentials"); // ❌ Failed: Show error
       },
     }),
   ],
