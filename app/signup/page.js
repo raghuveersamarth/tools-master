@@ -12,7 +12,7 @@ const SignUpPage = () => {
       headers: myHeaders,
       body: raw,
       redirect: "follow",
-    };
+    });
 
     fetch("http://localhost:3000/api/sign", requestOptions)
       .then((response) => response.text())
