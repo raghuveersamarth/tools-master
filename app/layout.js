@@ -24,7 +24,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} bg-[#98999c] antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} bg-[#fffbf5] antialiased`}>
         <Navbar/>
         <Sessionwrapper>{children}</Sessionwrapper>
       </body>

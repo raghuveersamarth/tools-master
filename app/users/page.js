@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import "../users/styles.css"
+import Link from "next/link";
 
 const page = () => {
 
@@ -26,24 +27,27 @@ const page = () => {
   },[])
   
   return (<div>
-    <h3 className="text-2xl font-medium m-3">Users</h3>
-    <table className="table-auto mx-auto ">
+    <h2 className="text-3xl ">Users</h2>
+    
+    <table className="table-auto mx-auto">
       <thead className="">
-        <tr className="border border-grey-300">
-          <th className="py-2">ID</th>
-          <th className="py-2">Username</th>
-          <th className="py-2">Password</th>
-          <th className="py-2">Role</th>
+        <tr className="">
+          <th className="">ID</th>
+          <th className="">Username</th>
+          <th className="">Password</th>
+          <th className="">Role</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         {users.map((user,index)=>{
           return (
             <tr className="" key={index} >
-              <td className="px-3 py-2">{user.id}</td>
-              <td className="px-3 py-2">{user.name}</td>
-              <td className="px-3 py-2">{user.password}</td>
-              <td className="px-3 py-2">{user.role}</td>
+              <td className="">{user.id}</td>
+              <td className="">{user.username}</td>
+              <td className="">{user.password}</td>
+              <td className="">{user.role}</td>
+              <td className=""><Link href={`/changerole?username=${user.username}&role=${user.role}`}><input type="button" value="Change Role" className="rounded-full  " /></Link></td>
             </tr>
           )
         })}
