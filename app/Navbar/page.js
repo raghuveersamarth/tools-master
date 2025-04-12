@@ -1,18 +1,19 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import "../Navbar/styles.css"
 
 const Navbar = () => {
   return (
-    <nav className="flex w-full justify-between bg-[#6d6e70] h-11">
-      <div className="nav text-xl">
+    <nav className="flex w-full justify-between h-11">
+      <div className="nav text-xl ">
         <ul className="justify-center flex gap-10 items-center">
           <Link href="/">
             <li className="hover:scale-103 transition-transform duration-1000">
               Home
             </li>
           </Link>
-          <Link href={"/Tools"}>
+          <Link href={"/tools"}>
             <li className="hover:scale-103 transition-transform duration-1000">
               Tools
             </li>
