@@ -1,6 +1,7 @@
 "use client";
 import { React, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
+import Link from "next/link";
 
 const SignUpPage = () => {
   const { data: session } = useSession();
@@ -99,9 +100,9 @@ const handleChange = (e) => {
 
         <div className="mt-6 text-center text-sm text-slate-600">
           Already have an account?
-          <a href="/login" className="font-medium text-[#4285f4]">
+          <Link href="/login" className="font-medium text-[#4285f4]">
             Log in
-          </a>
+          </Link>
         </div>
       </div>
     </div>

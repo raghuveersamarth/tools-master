@@ -38,11 +38,11 @@ const page = () => {
     }   
 
   return(
-    <div className="flex flex-col w-3xs min-h-screen con">
+    <div className="flex flex-col w-xs con border border-gray-300 ">
       <h1 className="text-3xl  mb-4">Edit Role</h1>
-      <div className="text-lg my-4">
-      <p>Username: {username}</p>
-      <p>Current Role: {role}</p>
+      <div className="text-lg my-4 ">
+      <p>Username:&nbsp; <span className="inline font-semibold">{username}</span></p>
+      <p>Current Role:&nbsp; <span className="inline font-semibold">{role}</span></p>
       </div>
       <select
         className="border p-2 rounded mt-2"
@@ -52,10 +52,10 @@ const page = () => {
         <option value="view">View</option>
         <option value="create">Create</option>
         <option value="update">Update</option>
-        <option value="admin">Admin</option>
+        <option value="admin" className="">Admin</option>
       </select>
       <button
-        className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+        className="bg-[#0046fe] text-white px-4 py-2 rounded mt-4"
         onClick={handlingsubmitinform}
       >
         Save Role

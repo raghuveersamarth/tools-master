@@ -37,7 +37,7 @@ const handler = async function(req)  {
     }
     else if(req.method === "GET"){
         try{
-            const users = await prisma.user.findMany();
+            const users = await prisma.user.findMany()
 
             return new Response(JSON.stringify(users),{
                 status: 200,

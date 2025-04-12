@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 const LoginPage = () => {
   const { data: session } = useSession();
@@ -82,9 +83,9 @@ const LoginPage = () => {
             placeholder="Password"
           />
           <p className="mb-3 mt-2 text-sm text-gray-500">
-            <a href="/forgot-password" className="text-blue-800 hover:text-blue-600">
+            <Link href="/forgot-password" className="text-blue-800 hover:text-blue-600">
               Reset your password?
-            </a>
+            </Link>
           </p>
           <button
             type="submit"
@@ -96,9 +97,9 @@ const LoginPage = () => {
 
         <div className="mt-6 text-center text-sm text-slate-600">
           Don't have an account?
-          <a href="/signup" className="font-medium text-[#4285f4]">
+          <Link href="/signup" className="font-medium text-[#4285f4]">
             Sign up
-          </a>
+          </Link>
         </div>
       </div>
     </div>

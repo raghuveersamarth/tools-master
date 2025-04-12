@@ -13,7 +13,7 @@ const Navbar = () => {
               Home
             </li>
           </Link>
-          <Link href={"/Tools"}>
+          <Link href={"/tools"}>
             <li className="hover:scale-103 transition-transform duration-1000">
               Tools
             </li>
