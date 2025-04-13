@@ -120,7 +120,7 @@ const SignUpPage = () => {
           Already have an account?{" "}
           <a href="/login" className="font-medium text-[#4285f4]">
             Log in
-          </a>
+          </Link>
         </div>
       </div>
     </div>

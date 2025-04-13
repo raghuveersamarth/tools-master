@@ -19,3 +19,11 @@ model User{
   role String @default("view")
   username String @unique
 }
+model Tool{
+  id Int @id @unique
+  tool_no Int
+  name String
+  size String
+  specification String
+  used_for_component String
+}

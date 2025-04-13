@@ -37,7 +37,7 @@ const handler = async function(req)  {
     }
     else if(req.method === "GET"){
         try{
-            const users = await prisma.user.findMany();
+            const users = await prisma.user.findMany()
 
             return new Response(JSON.stringify(users),{
                 status: 200,
@@ -48,8 +48,29 @@ const handler = async function(req)  {
             return Response.json({message: `Error occured ${error}`},{status:400})
         }
     }
+    else if(req.method === "PUT"){
+        const {username, role} = await req.json()
+        try{
+            const existingUser = await prisma.user.findUnique({
+                where: {username}
+            })
+            if(existingUser){
+                const changerole = await prisma.user.update({
+                    where: {username},
+                    data: {role: role},
+                })
+                return Response.json({message: `User role updated to ${role}`}, {status:200})
+            }
+            else{
+                return Response.json({message: "User not found"}, {status:400})
+            }
+        }
+        catch(err){
+            return Response.json({message: `Error occured ${err}`}, {status: 400})
+        }
+    }
     else{
         return Response.json({message: "Method not defined"},{status: 300})
     }
 }
-export {handler as GET,handler as POST}
+export {handler as GET,handler as POST, handler as PUT}

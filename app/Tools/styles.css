@@ -26,8 +26,8 @@ table tbody tr{
 table tbody tr:hover {
     background-color: #f3f4f6;
   }
-input{
-    background-color: #0046fe;
-    color: antiquewhite;
-    padding: 0.5rem 0.8rem;
+
+.addtoolrow{
+    text-align: right;
+    padding-inline-end: 3rem;
 }
