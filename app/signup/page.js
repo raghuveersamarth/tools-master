@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useSession, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -118,7 +119,7 @@ const SignUpPage = () => {
 
         <div className="mt-6 text-center text-sm text-slate-600">
           Already have an account?{" "}
-          <a href="/login" className="font-medium text-[#4285f4]">
+          <Link href="/login" className="font-medium text-[#4285f4]">
             Log in
           </Link>
         </div>
