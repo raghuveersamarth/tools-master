@@ -37,7 +37,7 @@ export const authOptions = {
           // If user exists, verify password
           const isValid = await bcrypt.compare(password, user.password);
           if (!isValid) {
-            throw new Error("Invalid password");
+            throw new Error("Username exists and password is incorrect");
           }
           return {
             id: user.id,

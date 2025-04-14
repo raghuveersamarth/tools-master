@@ -1,9 +1,13 @@
+"use client";
+import { signOut, useSession } from "next-auth/react";
+import Sessionwrapper from "../components/sessionwrapper";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import "../Navbar/styles.css"
+import "../Navbar/styles.css";
 
 const Navbar = () => {
+  const { data: session } = useSession();
   return (
     <nav className="flex w-full justify-between h-11">
       <div className="nav text-xl ">
@@ -29,15 +33,28 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flex">
-        <div className="flex items-center">
-          </div>
-          <Image
-            src="/userimg.png"
-            alt="User Image"
-            className="userimage ms-auto me-3 my-auto "
-            height={100}
-            width={50}
-          />
+        <div className="flex items-center"></div>
+        <Image
+          src="/userimg.png"
+          alt="User Image"
+          className="userimage ms-auto me-3 my-auto "
+          height={100}
+          width={50}
+        />
+        {session ? (
+          <button
+            className="bg-blue-500 cursor-pointer text-white px-4 py-2 rounded"
+            onClick={() => signOut()}
+          >
+            signOut
+          </button>
+        ) : (
+          <Link href="/signup">
+            <button className="bg-blue-500 cursor-pointer text-white px-4 py-2 rounded">
+              Sign Up
+            </button>
+          </Link>
+        )}
       </div>
     </nav>
   );
