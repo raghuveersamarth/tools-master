@@ -1,0 +1,25 @@
+.con{
+    margin: 4rem;
+    padding: 2rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.head{
+    margin-bottom: 1rem;
+}
+.form-divs label, input{
+    display: block;
+}
+.form-divs{
+    margin: 2rem 0rem;
+}
+.inputforms{
+    border: #e5e1dc solid 0.5px;
+}
+.inputforms{
+    border: #ddded9 solid 0.5px
+}
+.submitbtn{
+    background-color: #0046fe;
+    color: antiquewhite;
+    padding: 0.5rem 1.3rem;
+}
