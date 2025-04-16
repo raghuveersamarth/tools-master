@@ -3,11 +3,12 @@ import { NextResponse } from "next/server";
 
 const handler = async (req)=>{
     if(req.method==="POST"){
-        const {tool_id, name, size, specification, used_for_component} = await req.json()
+        const {tool_no, name, size, specification, used_for_component} = await req.json()
         try{
+            const tools = await prisma.tool.findMany()
 
-            const existingTool = await prisma.tool.findUnique({
-                where: {tool_id}
+            const existingTool = await prisma.tool.findFirst({
+                where: {tool_no:tool_no}
             })
 
             if(existingTool){
@@ -15,23 +16,23 @@ const handler = async (req)=>{
             }
             else{
                 let newId = 1;
-                for (let i = 0; i < users.length; i++) {
-                  if (users[i].id !== i + 1) {
+                for (let i = 0; i < tools.length; i++) {
+                  if (tools[i].id !== i + 1) {
                     newId = i + 1;
                     break;
                   }
                 }
-                if (newId === 1 && users.length > 0) newId = users.length + 1;
+                if (newId === 1 && tools.length > 0) newId = tools.length + 1;
 
-                const newTool = prisma.tool.create({
-                    data:{id:newId, name:name, size:size, specification:specification, used_for_component:used_for_component}
+                const newTool = await prisma.tool.create({
+                    data:{id:newId, tool_no:tool_no, name:name, size:size, specification:specification, used_for_component:used_for_component}
                 })
                 return Response.json({message:`Tool ${name} created`}, {status:200})
             }
         }
         catch(err){
             console.log(`Error : ${err}`)
-            return Response.json({message: "Error occured"}, {status:400})
+            return Response.json({message: `${err} occured`}, {status:400})
         }
     }
     else if(req.method === "GET"){

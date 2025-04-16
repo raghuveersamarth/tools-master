@@ -4,8 +4,13 @@ import "../tools/styles.css"
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { GET } from '../api/sign/route'
+import { useRouter } from 'next/navigation'
 
 const Tools = () => {
+  const router = useRouter()
+  const addtoolrouting = async() =>{
+    await router.push("/addtool")
+  }
 
    const [tools, setTools] = useState([])
   
@@ -54,7 +59,7 @@ const Tools = () => {
               </tr>
             )
           })}
-          <tr>
+          <tr onClick={addtoolrouting}>
             <td colSpan={6} className="text-[#0046fe] addtoolrow">+ Add Tool</td>
           </tr>
         </tbody>
