@@ -11,6 +11,9 @@ const Tools = () => {
   const addtoolrouting = async() =>{
     await router.push("/addtool")
   }
+  const toolrouting = async(id)=>{
+    await router.push(`/tool?tool_id=${id}`)
+  }
 
    const [tools, setTools] = useState([])
   
@@ -44,18 +47,28 @@ const Tools = () => {
             <th>Size</th>
             <th>Specifications</th>
             <th>Used for Component</th>
+            <th>Image</th>
           </tr>
         </thead>
         <tbody>
           {tools.map((tool)=>{
             return(
-              <tr key={tool.id}>
+              <tr key={tool.id} onClick={async()=>{await toolrouting(tool.id)}}>
                 <td>{tool.id}</td>
                 <td>{tool.tool_no}</td>
                 <td>{tool.name}</td>
                 <td>{tool.size}</td>
                 <td>{tool.specification}</td>
                 <td>{tool.used_for_component}</td>
+                {tool.imageUrl && (
+                  <td>
+                    <img
+                    src={tool.imageUrl}
+                    alt={tool.name}
+                    className="w-full h-48 object-cover rounded"
+                    />
+                  </td>
+                )}
               </tr>
             )
           })}

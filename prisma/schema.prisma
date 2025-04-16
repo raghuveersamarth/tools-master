@@ -26,4 +26,5 @@ model Tool{
   size String
   specification String
   used_for_component String
+  imageUrl String 
 }

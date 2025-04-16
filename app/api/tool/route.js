@@ -1,9 +1,18 @@
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { put } from "@vercel/blob";
+
+export const config = {
+    runtime: "edge"
+}
 
 const handler = async (req)=>{
     if(req.method==="POST"){
-        const {tool_no, name, size, specification, used_for_component} = await req.json()
+        const {tool_no, name, size, specification, used_for_component, image} = await req.json()
+        const imgstr = "tools/"+Date.now()+"-"+image.name
+        const imgbuffer = Buffer.from(image)
+
+        const {url} = await put(imgstr,imgbuffer,{access: "public"})
         try{
             const tools = await prisma.tool.findMany()
 
@@ -25,7 +34,7 @@ const handler = async (req)=>{
                 if (newId === 1 && tools.length > 0) newId = tools.length + 1;
 
                 const newTool = await prisma.tool.create({
-                    data:{id:newId, tool_no:tool_no, name:name, size:size, specification:specification, used_for_component:used_for_component}
+                    data:{id:newId, tool_no:tool_no, name:name, size:size, specification:specification, used_for_component:used_for_component,imageUrl: url}
                 })
                 return Response.json({message:`Tool ${name} created`}, {status:200})
             }
