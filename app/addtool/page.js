@@ -15,9 +15,22 @@ const page = () => {
         comp: ""
     })
 
+    const [file, setFile] = useState(null)
+
     const handleChange = (e)=>{
         const {id, value} = e.target
         setFormData((prev)=>({...prev, [id]: value}))
+    }
+
+    const changeimg = async(e)=>{
+        
+        const file = e.target.files?.[0];
+        if (!file) return;
+        
+        const arrayBuffer = await file.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        
+        setFile(buffer)
     }
 
     const handleSubmit = async (e)=>{
@@ -34,7 +47,8 @@ const page = () => {
                     name: formData.name,
                     size: formData.size,
                     specification: formData.spec,
-                    used_for_component: formData.spec
+                    used_for_component: formData.spec,
+                    image: file
                 })
             })
 
@@ -73,6 +87,10 @@ const page = () => {
             <div className="flex items-center mt-7">
                 <label htmlFor="comp" className="text-xl w-54">Used for Component</label>
                 <input type="text" name="" id="comp" className="px-3 py-1 border border-gray-300 rounded w-75" onChange={handleChange}/>    
+            </div>
+            <div className="flex items-center mt-7">
+                <label htmlFor="img" className="text-xl w-54">Image</label>
+                <input type="file" accept="image/*" id="img" className="px-3 py-1 border border-gray-300 rounded w-75" onChange={changeimg}/>    
             </div>
             <input type="submit" value="Add" className="submitbtn  rounded mt-7" />
         </form>
