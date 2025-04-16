@@ -1,13 +1,23 @@
 "use client";
 import { signOut, useSession } from "next-auth/react";
 import Sessionwrapper from "../components/sessionwrapper";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import "../Navbar/styles.css";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const { data: session } = useSession();
+  const router = useRouter();
+  useEffect(() => {
+    if (!session) {
+      router.push("/signup")
+    }
+    console.log(session)
+  }, [session, router]);
+  
+
   return (
     <nav className="flex w-full justify-between h-11">
       <div className="nav text-xl ">
@@ -25,11 +35,15 @@ const Navbar = () => {
           <li className="hover:scale-103 transition-transform duration-1000">
             Categories
           </li>
-          <Link href="/users">
-            <li className="hover:scale-103 transition-transform duration-1000">
-              Users
-            </li>
-          </Link>
+          {
+            // only show this link if the user is an admin and session is not null
+            session && session.user.role === "admin" &&
+            <Link href="/users">
+              <li className="hover:scale-103 transition-transform duration-1000">
+                Users
+              </li>
+            </Link>
+          }
         </ul>
       </div>
       <div className="flex">
@@ -43,7 +57,7 @@ const Navbar = () => {
         />
         {session ? (
           <button
-            className="bg-blue-500 cursor-pointer text-white px-4 py-2 rounded"
+            className="bg-blue-500 cursor-pointer text-white px-1.5 py-1.5 rounded"
             onClick={() => signOut()}
           >
             signOut
