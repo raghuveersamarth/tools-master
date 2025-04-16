@@ -4,8 +4,10 @@ import { useEffect } from "react";
 import { useState } from "react";
 import "../users/styles.css"
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 const page = () => {
+  const {data: session} = useSession()
 
   const [users, setUsers] = useState([])
 
@@ -34,22 +36,25 @@ const page = () => {
         <tr className="">
           <th className="">ID</th>
           <th className="">Username</th>
-          <th className="">Password</th>
           <th className="">Role</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
         {users.map((user,index)=>{
-          return (
-            <tr className="" key={index} >
-              <td className="">{user.id}</td>
+          if(user.username !== session.user.username){
+            return (
+              <tr className="" key={index} >
+              <td className="">{index+1}</td>
               <td className="">{user.username}</td>
-              <td className="">{user.password}</td>
               <td className="">{user.role}</td>
               <td className=""><Link href={`/changerole?username=${user.username}&role=${user.role}`}><input type="button" value="Change Role" className="rounded-full  " /></Link></td>
             </tr>
           )
+        }
+        else{
+          null
+        }
         })}
       </tbody>
     </table>
