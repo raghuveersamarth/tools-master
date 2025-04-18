@@ -1,19 +1,23 @@
 "use client"
 import React from 'react'
 import "./styles.css"
+import { useSession } from 'next-auth/react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { GET } from '../api/sign/route'
 import { useRouter } from 'next/navigation'
 
 const Tools = () => {
+  const { data: session, status } = useSession();
   const router = useRouter()
   const addtoolrouting = async() =>{
-    await router.push("/addtool")
+    router.push("/addtool")
   }
   const toolrouting = async(id)=>{
-    await router.push(`/tool?tool_id=${id}`)
+    router.push(`/tool?tool_id=${id}`)
   }
+  
+  
 
    const [tools, setTools] = useState([])
   
@@ -54,7 +58,7 @@ const Tools = () => {
         <tbody>
           {tools.map((tool)=>{
             return(
-              <tr key={tool.id} onClick={async()=>{await toolrouting(tool.id)}}>
+              <tr key={tool.id} className='cursor-pointer' onClick={async()=>{await toolrouting(tool.id)}}>
                 <td>{tool.id}</td>
                 {tool.imageUrl && (
                   <td>
@@ -75,7 +79,7 @@ const Tools = () => {
             )
           })}
           <tr onClick={addtoolrouting}>
-            <td colSpan={7} className="text-[#0046fe] addtoolrow">+ Add Tool</td>
+            <td colSpan={7} className="text-[#0046fe] addtoolrow cursor-pointer">+ Add Tool</td>
           </tr>
         </tbody>
       </table>

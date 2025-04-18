@@ -45,8 +45,8 @@ const page = () => {
             <p className="text-lg my-5">Used for Component: {tool.used_for_component}</p>
           </div>
         </div>
-        <p></p>
     </div>
+    
   </div>);
 };
 

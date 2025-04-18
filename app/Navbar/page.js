@@ -9,15 +9,6 @@ import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const { data: session } = useSession();
-  const router = useRouter();
-  useEffect(() => {
-    if (!session) {
-      router.push("/signup")
-    }
-    console.log(session)
-  }, [session, router]);
-  
-
   return (
     <nav className="flex w-full justify-between h-11">
       <div className="nav text-xl ">
