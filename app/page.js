@@ -11,7 +11,7 @@ export default function Home() {
 // Check if user is logged in
     if (!session) {
       // User is logged in, redirect to dashboard or any other page
-      router.push("/signup");
+      // router.push("/signup");
     }
   }, [session, router]);
   return (

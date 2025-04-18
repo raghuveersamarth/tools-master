@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import "../tools/styles.css"
+import "./styles.css"
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { GET } from '../api/sign/route'
@@ -42,12 +42,13 @@ const Tools = () => {
         <thead>
           <tr>
             <th>ID</th>
+            <th>Image</th>
             <th>Tool Number</th>
             <th>Name</th>
             <th>Size</th>
             <th>Specifications</th>
             <th>Used for Component</th>
-            <th>Image</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -55,25 +56,26 @@ const Tools = () => {
             return(
               <tr key={tool.id} onClick={async()=>{await toolrouting(tool.id)}}>
                 <td>{tool.id}</td>
-                <td>{tool.tool_no}</td>
-                <td>{tool.name}</td>
-                <td>{tool.size}</td>
-                <td>{tool.specification}</td>
-                <td>{tool.used_for_component}</td>
                 {tool.imageUrl && (
                   <td>
                     <img
                     src={tool.imageUrl}
                     alt={tool.name}
-                    className="w-full h-48 object-cover rounded"
+                    className="object-cover rounded w-25 h-20"
                     />
                   </td>
                 )}
+                <td>{tool.tool_no}</td>
+                <td>{tool.name}</td>
+                <td>{tool.size}</td>
+                <td>{tool.specification}</td>
+                <td>{tool.used_for_component}</td>
+              
               </tr>
             )
           })}
           <tr onClick={addtoolrouting}>
-            <td colSpan={6} className="text-[#0046fe] addtoolrow">+ Add Tool</td>
+            <td colSpan={7} className="text-[#0046fe] addtoolrow">+ Add Tool</td>
           </tr>
         </tbody>
       </table>
