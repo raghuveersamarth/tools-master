@@ -6,16 +6,19 @@ import Link from "next/link";
 
 const SignUpPage = () => {
   const router = useRouter();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
-    // If user is logged in, redirect to home page
     if (session) {
-      router.push("/");
+      router.push("/")
     }
+    console.log(session)
   }, [session, router]);
+  
+  
+  
 
   const [form, setForm] = useState({
     username: "",

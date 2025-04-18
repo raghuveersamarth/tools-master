@@ -12,7 +12,7 @@ const Navbar = () => {
   const router = useRouter();
   useEffect(() => {
     if (!session) {
-      // router.push("/signup")
+      router.push("/signup")
     }
     console.log(session)
   }, [session, router]);
