@@ -55,7 +55,8 @@ const handler = async (req)=>{
         });
         }
         catch(error){
-            return Response.json({message: `Error occured ${error}`},{status:400})
+            console.log(`Error : ${error}`)
+            return Response.json({message: `${error} occured`}, {status:400})
         }
     }
     else{

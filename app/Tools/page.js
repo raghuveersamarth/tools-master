@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import "../tools/styles.css"
+import "./styles.css"
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { GET } from '../api/sign/route'
