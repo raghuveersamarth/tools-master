@@ -1,25 +1,26 @@
-import prisma from "@/lib/prisma"
-import { NextResponse } from "next/server"
+import prisma from "@/lib/prisma";
 
-const handler = async (req)=>{
-    if(req.method === "GET"){
+const handler = async (req) => {
+    if(req.method === "POST"){
         const {id} = await req.json()
+        const newId = parseInt(id)
+
         try{
-            const user = await prisma.user.findUnique({
-                where: {id: id}
+            const tool = await prisma.tool.findUnique({
+                where: {id: newId}
             })
 
-            if(user){
-                return new Response(JSON.stringify(user),{
-                    status:200,
-                    headers: {"Content-Type":"application/json"}
-                })
+            if (tool){
+                return new Response(JSON.stringify(tool),{status: 200})
             }
         }
         catch(err){
-            return Response.json({"message":`${err}occured`}, {status:400})
+            return Response.json({message: `${newId}${err} occured`}, {status: 400})
         }
+    }
+    else{
+        return Response.json({message: `unsupported method`}, {status: 400})
     }
 }
 
-export {handler as GET}
+export {handler as POST}

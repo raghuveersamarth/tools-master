@@ -57,14 +57,14 @@ const Navbar = () => {
         />
         {session ? (
           <button
-            className="bg-blue-500 cursor-pointer text-white px-1.5 py-1.5 rounded"
+            className="bg-[#0046fe] rounded text-white cursor-pointer px-2 my-1 me-1"
             onClick={() => signOut()}
           >
-            signOut
+            Sign Out
           </button>
         ) : (
           <Link href="/signup">
-            <button className="bg-blue-500 cursor-pointer text-white px-4 py-2 rounded">
+            <button className="bg-[#0046fe] cursor-pointer text-white px-2 rounded my-1 me-1">
               Sign Up
             </button>
           </Link>
