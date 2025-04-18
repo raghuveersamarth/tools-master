@@ -26,5 +26,25 @@ model Tool{
   size String
   specification String
   used_for_component String
-  imageUrl String 
+  imageUrl String
+
+  toolCategory ToolCategory[] //realtoion to tool with categories
+}
+
+model Category{
+  id Int @id @default(autoincrement())
+  name String
+  value String?
+  toolCategory ToolCategory[] //relation to categories with tool
+}
+
+model ToolCategory{
+  id Int @id @default(autoincrement())
+  tool Tool @relation(fields: [toolId], references: [id])
+  toolId Int 
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  value String
+
+  @@unique([toolId, categoryId])
 }

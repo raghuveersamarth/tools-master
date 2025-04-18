@@ -12,7 +12,7 @@ const Navbar = () => {
   const router = useRouter();
   useEffect(() => {
     if (!session) {
-      router.push("/signup")
+      // router.push("/signup")
     }
     console.log(session)
   }, [session, router]);
@@ -32,9 +32,11 @@ const Navbar = () => {
               Tools
             </li>
           </Link>
+          <Link href={"/categories"}>
           <li className="hover:scale-103 transition-transform duration-1000">
             Categories
           </li>
+          </Link>
           {
             // only show this link if the user is an admin and session is not null
             session && session.user.role === "admin" &&
