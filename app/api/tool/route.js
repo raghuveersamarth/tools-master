@@ -8,7 +8,7 @@ export const config = {
 
 const handler = async (req)=>{
     if(req.method==="POST"){
-        const {tool_no, name, size, specification, used_for_component, image} = await req.json()
+        const {tool_no, name, size, specification, used_for_component, image,minimum, maximum,location} = await req.json()
         const imgstr = "tools/"+Date.now()+"-"+image.name
         const imgbuffer = Buffer.from(image)
 
@@ -19,7 +19,6 @@ const handler = async (req)=>{
             const existingTool = await prisma.tool.findFirst({
                 where: {tool_no:tool_no}
             })
-
             if(existingTool){
                 return Response.json({message: "Tool already exists"}, {status:400})
             }
@@ -34,7 +33,7 @@ const handler = async (req)=>{
                 if (newId === 1 && tools.length > 0) newId = tools.length + 1;
 
                 const newTool = await prisma.tool.create({
-                    data:{id:newId, tool_no:tool_no, name:name, size:size, specification:specification, used_for_component:used_for_component,imageUrl: url}
+                    data:{id:newId, tool_no:tool_no, name:name, size:size, specification:specification, used_for_component:used_for_component,imageUrl: url, min_quantity:minimum, max_quantity:maximum, location:location},
                 })
                 return Response.json({message:`Tool ${name} created`}, {status:200})
             }

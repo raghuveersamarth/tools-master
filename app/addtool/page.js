@@ -13,6 +13,9 @@ const page = () => {
     size: "",
     spec: "",
     comp: "",
+    min: "",
+    max: "",
+    location: "",
   });
 
   const [file, setFile] = useState(null);
@@ -34,13 +37,16 @@ const page = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log(formData);
     if (
       formData.num !== "" &&
-      formData.name !== "" &&
+      formData.name.length >= 3 &&
       formData.size !== "" &&
       formData.spec !== "" &&
-      formData.comp !== ""
+      formData.comp !== "" &&
+      formData.min !== "" &&
+      formData.max !== "" &&
+      formData.location.length >= 3
     ) {
       const response = await fetch("/api/tool", {
         method: "POST",
@@ -54,15 +60,18 @@ const page = () => {
           specification: formData.spec,
           used_for_component: formData.spec,
           image: file,
+          minimum: parseInt(formData.min),
+          maximum: parseInt(formData.max),
+          location: formData.location,
         }),
       });
 
       const data = await response.json();
       console.log(data);
 
-      router.push("/tools");
+    //   router.push("/tools");
     } else {
-      console.error("All fields need to filled");
+      alert("Please fill all the fields correctly");
     }
   };
 
@@ -72,7 +81,7 @@ const page = () => {
       <hr />
       <div className="tool-common">
         <form action="" className="" onSubmit={handleSubmit}>
-          <div className="flex gap-4 items-start ">
+          <div className="flex justify-around items-start ">
             <div>
               <div className="flex items-center mt-7">
                 <label htmlFor="num" className="text-xl w-54">
@@ -155,7 +164,7 @@ const page = () => {
                 <input
                   type="number"
                   name=""
-                  id="num"
+                  id="min"
                   className="px-3 py-1 border border-gray-300 rounded w-75"
                   onChange={handleChange}
                 />
@@ -167,7 +176,7 @@ const page = () => {
                 <input
                   type="number"
                   name=""
-                  id="num"
+                  id="max"
                   className="px-3 py-1 border border-gray-300 rounded w-75"
                   onChange={handleChange}
                 />
@@ -179,7 +188,7 @@ const page = () => {
                 <input
                   type="text"
                   name=""
-                  id="num"
+                  id="location"
                   className="px-3 py-1 border border-gray-300 rounded w-75"
                   onChange={handleChange}
                 />
@@ -187,7 +196,7 @@ const page = () => {
             </div>
           </div>
 
-          <button className="submitbtn rounded mt-7">Add</button>
+          <button className="submitbtn rounded self-center mt-7">Add</button>
         </form>
       </div>
     </div>

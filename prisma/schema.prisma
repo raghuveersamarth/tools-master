@@ -27,4 +27,7 @@ model Tool{
   specification String
   used_for_component String
   imageUrl String 
+  minquantity Int
+  maxquantity Int
+  location String?
 }
