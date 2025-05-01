@@ -9,6 +9,15 @@ import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const { data: session } = useSession();
+  const router = useRouter();
+  useEffect(() => {
+    if (!session) {
+      router.push("/signup")
+    }
+    console.log(session)
+  }, [session, router]);
+  
+
   return (
     <nav className="flex w-full justify-between h-11">
       <div className="nav text-xl ">
@@ -23,9 +32,11 @@ const Navbar = () => {
               Tools
             </li>
           </Link>
+          <Link href={"/categories"}>
           <li className="hover:scale-103 transition-transform duration-1000">
             Categories
           </li>
+          </Link>
           {
             // only show this link if the user is an admin and session is not null
             session && session.user.role === "admin" &&
